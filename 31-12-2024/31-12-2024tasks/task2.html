@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 2</title>
+    <style>
+        #div1 {
+            color: black;
+            width: 500px;
+            height: 75px;
+            border: 1px solid;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="font-options">
+
+
+        <select id="font" onchange="text()">
+            <option value="Times New Roman">Times new Roman</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+
+        <label>Size:</label>
+        <select id="size" onchange="text()">
+            <option value="5">5</option>
+            <option value="15" selected>15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+        </select>
+
+        <input type="checkbox" id="italic" onchange="text()">
+        <label for="italic"> Italic</label>
+
+        <input type="checkbox" id="bold" onchange="text()">
+        <label for="bold"> Bold</label>
+
+        <input type="checkbox" id="underline" onchange="text()">
+        <label for="underline"> Underline</label>
+
+    </div>
+    <br>
+
+    <div id="div1">
+        The quick brown fox jumps over the lazy dog
+    </div>
+
+    <script>
+        function text() {
+            const text = document.getElementById('div1');
+
+            text.style.fontFamily = document.getElementById('font').value;
+            text.style.fontSize = document.getElementById('size').value + 'px';
+
+            text.style.fontStyle = document.getElementById('italic').checked ? 'italic' : 'normal';
+            text.style.fontWeight = document.getElementById('bold').checked ? 'bold' : 'normal';
+            text.style.textDecoration = document.getElementById('underline').checked ? 'underline' : 'none';
+        }
+        text();
+    </script>
+</body>
+
+</html>

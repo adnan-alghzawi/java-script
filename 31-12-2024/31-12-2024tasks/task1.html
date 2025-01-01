@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1</title>
+    <style>
+        #div1 {
+            color: black;
+            background-color: yellow;
+            text-align: center;
+            width: 300px;
+            height: 20px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" onmouseover="hover()" onmouseout="out()">
+        Hello world !
+    </div>
+    <script>
+        function hover() {
+            var hover = document.getElementById('div1');
+            hover.innerHTML = "Can i help ypu ? ";
+        }
+        function out() {
+            var out = document.getElementById('div1');
+            out.innerHTML = " Hello world !";
+        }
+
+    </script>
+
+</body>
+
+</html>
