@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced User Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .output img {
+            max-width: 100px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .output p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>User Information Form</h1>
+
+    <form id="userForm">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" required>
+
+        <label for="birthDate">Birth Date:</label>
+        <input type="date" id="birthDate" required>
+
+        <label for="image">Upload Your Image:</label>
+        <input type="file" id="image">
+
+        <label for="description">Description:</label>
+        <textarea id="description" rows="4" required></textarea>
+
+        <label for="major">Major & University:</label>
+        <input type="text" id="major" required>
+
+        <label>Programming Languages:</label>
+        <input type="checkbox" id="html" value="HTML"> HTML
+        <input type="checkbox" id="css" value="CSS"> CSS
+        <input type="checkbox" id="javascript" value="JavaScript"> JavaScript
+
+        <label for="siblingsNumber">Siblings Number:</label>
+        <input type="number" id="siblingsNumber" min="0">
+
+        <label for="siblingsDescription">Description of Siblings:</label>
+        <textarea id="siblingsDescription" rows="4"></textarea>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+
+    </form>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const birthDate = document.getElementById('birthDate').value;
+            const image = document.getElementById('image').files[0];
+            const description = document.getElementById('description').value;
+            const major = document.getElementById('major').value;
+            const siblingsNumber = document.getElementById('siblingsNumber').value;
+            const siblingsDescription = document.getElementById('siblingsDescription').value;
+
+            const languages = [];
+            if (document.getElementById('html').checked) languages.push('HTML');
+            if (document.getElementById('css').checked) languages.push('CSS');
+            if (document.getElementById('javascript').checked) languages.push('JavaScript');
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Clear previous output
+
+            if (image) {
+                const imgElement = document.createElement('img');
+                imgElement.src = URL.createObjectURL(image);
+                outputDiv.appendChild(imgElement);
+            }
+
+            outputDiv.innerHTML += `
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Age:</strong> ${age}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Birth Date:</strong> ${birthDate}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <p><strong>Major & University:</strong> ${major}</p>
+                <p><strong>Programming Languages:</strong> ${languages.join(', ') || 'None'}</p>
+                <p><strong>Siblings Number:</strong> ${siblingsNumber}</p>
+                <p><strong>Siblings Description:</strong> ${siblingsDescription}</p>
+            `;
+        }
+    </script>
+
+</body>
+
+</html>
