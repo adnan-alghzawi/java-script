@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Selector</title>
+    <style>
+        #flagImg {
+            min-height: 300px;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Select a Flag</h1>
+    <select id="flags">
+        <option selected>Choose a flag</option>
+        <option value="jordan">Jordan</option>
+        <option value="palestine">Palestine</option>
+    </select>
+
+    <br>
+    <div id="flagImg">No flag selected</div>
+
+    <script>
+        let flags = document.getElementById("flags");
+
+        flags.addEventListener('change', flag);
+
+        function flag() {
+            if (flags.value === "jordan") {
+                document.getElementById("flagImg").innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYl5hS6pcqN6VqPXXdfS6LQGfzDbDpivKTw&s" width=500 height=300>`;
+            } else if (flags.value === "palestine") {
+                document.getElementById("flagImg").innerHTML = `<img src="https://cdn.freewebstore.com/origin/413338/1519143452884_palestinian-flag.jpg" width=500 height=300>`;
+            } else {
+                document.getElementById("flagImg").innerHTML = `No flag selected`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
