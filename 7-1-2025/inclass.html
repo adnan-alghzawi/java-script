@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple JSON Example</title>
+
+</head>
+
+<body>
+    <h1 id="title"></h1>
+    <p id="message"></p>
+
+    <script>
+        async function loadJSON() {
+            try {
+                // Fetch JSON file
+                const response = await fetch('data.json');
+
+                // Check for errors in the response
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Parse JSON data
+                const data = await response.json();
+
+                // Display data in the HTML
+                document.getElementById('title').textContent = data.title;
+                document.getElementById('message').textContent = data.message;
+            } catch (error) {
+                // Handle errors
+                console.error('Error loading JSON:', error);
+                document.getElementById('message').textContent = 'Failed to load data.';
+            }
+        }
+
+        // Call the function to load and display the JSON data
+        loadJSON();
+    </script>
+</body>
+
+</html>
