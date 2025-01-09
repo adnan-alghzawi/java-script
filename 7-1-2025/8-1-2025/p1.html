@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Create a Simple Calculator
+Problem: Create a function simpleCalculator(a, b, operator) that performs basic arithmetic operations (addition, subtraction, multiplication, division) based on the given operator.
+
+Input/Output Example:
+
+Input: 5, 3, '+'
+Output: 8
+        */
+        function simpleCalculator(a, b, operator) {
+
+            if (operator == '+') {
+                let add = a + b;
+                return add;
+            }
+            if (operator == '-') {
+                let sub = a - b;
+                return sub;
+            }
+            if (operator == '*') {
+                let multi = a * b;
+                return multi;
+            }
+            if (operator == '/') {
+                if (b == 0) {
+                    return 'chose another number for b';
+                }
+                else {
+                    let div = a / b;
+                    return div;
+                }
+
+            }
+
+        }
+        document.write("a + b = " + simpleCalculator(5, 3, '+') + "<br>");
+        document.write("a - b = " + simpleCalculator(5, 3, '-') + "<br>");
+        document.write("a * b = " + simpleCalculator(5, 3, '*') + "<br>");
+        document.write("a / b = " + simpleCalculator(5, 0, '/') + "<br>");
+
+        /*
+        Check if a Number is Prime
+Problem: Create a function isPrime(num) that checks if a number is prime. A prime number 
+is only divisible by 1 and itself.
+
+Input/Output Example:
+
+Input: 7
+Output: true
+Input: 10
+Output: false
+
+        */
+        function isPrime(num) {
+            while (num < 2) return false;
+            //for(let let i=2 ; i<=math.sqrt(num) ; i++)
+            for (let i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        document.write(isPrime(1) + "<br>"); // false
+        document.write(isPrime(7) + "<br>"); // true
+        document.write(isPrime(9) + "<br>"); // false
+        document.write(isPrime(10) + "<br>"); // false
+
+    </script>
+</body>
+
+</html>

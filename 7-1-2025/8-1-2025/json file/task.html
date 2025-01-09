@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .button-container {
+
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: gray;
+            color: white;
+            border: 1px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>User Profiles</h1>
+    <div class="button-container">
+        <button id="showUsersButton">Show Users</button>
+    </div>
+    <div class="container" id="userCards">
+        <!-- Cards will be injected here -->
+    </div>
+    <script>
+        document.getElementById('showUsersButton').addEventListener('click', () => {
+            // Fetch the JSON file and display its data
+            fetch('users.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch JSON file');
+                    }
+                    return response.json();
+                })
+                .then(users => {
+                    const userCards = document.getElementById('userCards');
+                    userCards.innerHTML = ''; // Clear any existing cards
+
+                    // Loop through each user and create a card
+                    users.forEach(user => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = `
+          <h2>${user.name}</h2>
+          <p><strong>Age:</strong> ${user.age}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Profession:</strong> ${user.profession}</p>
+        `;
+                        userCards.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+    </script>
+</body>
+
+</html>

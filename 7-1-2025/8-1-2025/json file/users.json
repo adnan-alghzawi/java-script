@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Ali Ahmad",
+    "age": 25,
+    "email": "ali.ahmad@example.com",
+    "profession": "Software Engineer"
+  },
+  {
+    "name": "Sara Khalid",
+    "age": 28,
+    "email": "sara.khalid@example.com",
+    "profession": "Graphic Designer"
+  },
+  {
+    "name": "Mohammed Zaid",
+    "age": 30,
+    "email": "mohammed.zaid@example.com",
+    "profession": "Data Analyst"
+  },
+  {
+    "name": "Layla Noor",
+    "age": 22,
+    "email": "layla.noor@example.com",
+    "profession": "Content Writer"
+  },
+  {
+    "name": "Omar Hassan",
+    "age": 27,
+    "email": "omar.hassan@example.com",
+    "profession": "Civil Engineer"
+  }
+]
